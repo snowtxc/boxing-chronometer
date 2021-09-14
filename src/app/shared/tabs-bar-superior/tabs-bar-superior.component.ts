@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tabs-bar-superior',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsBarSuperiorComponent implements OnInit {
 
-  constructor() { }
+  route: string = '';
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.router.events.pipe(take(1)).subscribe((data:any) =>{
+      this.route = data.url;
+    })
+
+
   }
 
 }
