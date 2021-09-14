@@ -1,9 +1,9 @@
 <div class="card">
     <div class="card-content">
-        <h1 style="font-size: 120px; text-align: center;">00:00</h1>
+        <h1 style="font-size: 120px; text-align: center;">{{minutes}}:{{seconds}}</h1>
     </div>
 
     <footer class="card-footer" >
-        <button class="button is-danger" style="width: 100%; padding: 30px; border-radius: 10px;" >Iniciar Round</button>
+        <button class="button is-danger" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="onClick()">Iniciar Round</button>
     </footer>
 </div>

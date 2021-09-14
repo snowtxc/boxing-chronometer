@@ -18,8 +18,6 @@ export class TabsBarSuperiorComponent implements OnInit {
     this.router.events.pipe(take(1)).subscribe((data:any) =>{
       this.route = data.url;
     })
-
-
   }
 
 }
