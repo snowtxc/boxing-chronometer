@@ -31,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bulma/css/bulma.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -127,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "boxing-chronometer"
+  "defaultProject": "boxing-chronometer",
+  "cli": {
+    "analytics": "2ad6c65d-a88e-4257-85cd-7fde70b58454"
+  }
 }
