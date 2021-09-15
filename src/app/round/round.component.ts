@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
-import {interval, Observer} from 'rxjs';
+import {interval, Observer, Subscription} from 'rxjs';
 
 
 
@@ -19,21 +19,29 @@ export class RoundComponent implements OnInit {
   minutes : number = 1;
 
   contador$ = interval(1000);
+  contadorObs: Subscription;
   
+  en_curso = false;
   
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) {
+    //Inicializacion
+    this.contadorObs = this.contador$.subscribe();
+    this.contadorObs.unsubscribe();
+
+   }
 
   ngOnInit(): void {  
 
   }
 
   onClick(){
-   let contadorObs = this.contador$.subscribe((n) => {
+  this.en_curso = true;
+   this.contadorObs = this.contador$.subscribe((n) => {
 
       if (this.seconds == 0) {
         if (this.seconds == 0 && this.minutes == 0) {
-          contadorObs.unsubscribe();
+          this.contadorObs.unsubscribe();
           this.router.navigateByUrl('descanso');
           
         }else{
@@ -43,6 +51,19 @@ export class RoundComponent implements OnInit {
       }
       this.seconds = this.seconds - 1;
     })
+  }
+
+  onPause(){
+    this.en_curso = false;
+    this.contadorObs.unsubscribe();
+  }
+
+
+  reset(){
+    this.en_curso = false;
+    this.contadorObs.unsubscribe();
+    this.seconds = 10;
+    this.minutes = 1;
   }
 
 }

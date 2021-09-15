@@ -1,9 +1,16 @@
 <div class="card">
+    
     <div class="card-content">
         <h1 style="font-size: 120px; text-align: center;">{{minutes}}:{{seconds}}</h1>
     </div>
 
     <footer class="card-footer" >
-        <button class="button is-danger" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="onClick()">Iniciar Round</button>
+        <button class="button is-danger" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="onClick()" *ngIf="!en_curso">Iniciar Entrenamiento</button>
+        <button class="button is-info" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="onPause()" *ngIf="en_curso">Pausar</button>
+    
     </footer>
+
+    <div>
+        <button class="button is-info" style="width: 100%; padding: 20px; border-radius: 10px;" (click)="reset()" >Reset</button>
+    </div>
 </div>
