@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+
+import {filter, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tabs-bar-superior',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsBarSuperiorComponent implements OnInit {
 
-  constructor() { }
+  routeDetect: string = '';
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((data:any) =>{
+      this.routeDetect = data.url;
+    })
   }
 
 }

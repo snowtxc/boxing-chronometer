@@ -1,1 +1,45 @@
-<p>set-training works!</p>
+
+
+
+    <div class="box">
+        <div class="field">
+            <label class="label">Cantidad Rounds</label>
+            <div class="control">
+                <input class="input" type="number" [(ngModel)]="cant_rounds" #cantRounds [disabled]="en_curso">
+            </div>
+        </div>
+    
+        <div class="field">
+            <label class="label">Tiempo por round</label>
+            <div class="control">
+                <div>
+                    <label for="minutes">Minutes</label>
+                    <input class="input" type="number" class="minutes" min="0" max="1000" [(ngModel)]="min_rounds"
+                        #RoundMinutes [disabled]="en_curso">
+                </div>
+                <div>
+                    <label for="seconds">Seconds</label>
+                    <input class="input" type="number" class="seconds" min="0" max="60" [(ngModel)]="sec_rounds"
+                        #RoundSeconds [disabled]="en_curso">
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="field">
+            <label class="label">Tiempo por descanso</label>
+            <div class="control">
+                <div>
+                    <label for="minutes">Minutes</label>
+                    <input class="input" type="number" class="minutes" min="0" max="1000" [(ngModel)]="min_descanso"
+                        #DescansoMinutes [disabled]="en_curso">
+                </div>
+                <div>
+                    <label for="seconds">Seconds</label>
+                    <input class="input" type="number" class="seconds" min="0" max="60" [(ngModel)]="sec_descanso"
+                        #DescansoSeconds [disabled]="en_curso">
+                </div>
+            </div>
+        </div>
+    </div>
+

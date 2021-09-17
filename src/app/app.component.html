@@ -1,12 +1,14 @@
 
 
 <div class="row">
-   <div class="col">
+   <div class="col-8 offset-1">
       <div> <app-tabs-bar-superior></app-tabs-bar-superior></div>
-     <router-outlet></router-outlet>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
    </div>
 
-  <div class="col">
+  <div class="col-3">
       <app-set-training></app-set-training>
   </div>
 
@@ -14,4 +16,3 @@
 
 
 
-<router-outlet></router-outlet>
