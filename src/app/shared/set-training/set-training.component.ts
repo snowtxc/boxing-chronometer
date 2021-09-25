@@ -39,9 +39,10 @@ export class SetTrainingComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(){
     fromEvent(this.cantRoundsELEM?.nativeElement,'blur').subscribe(data =>{
-        if (this.cant_rounds == null || !(this.cant_rounds > 0 && this.cant_rounds <= 15)) {
-          this.cant_rounds = 15;
+        if (this.cant_rounds == null || !(this.cant_rounds > 0 && this.cant_rounds <= 12)) {
+          this.cant_rounds = 12;
         }
+       
         this.appService.setCantRounds(this.cant_rounds);
     })
      

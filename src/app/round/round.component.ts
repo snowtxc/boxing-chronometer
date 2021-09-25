@@ -57,7 +57,12 @@ export class RoundComponent implements OnInit {
 
     this.appService.subjectRunning.subscribe(data => { this.cronometroEnCurso = data;   })
     
-    this.appService.subjectCantRounds.subscribe(data => {   this.cant_rounds = data;})
+    this.appService.subjectCantRounds.subscribe(data => {  
+      if(data < this.appService.contRounds){
+        data = this.appService.contRounds;
+      }
+      this.cant_rounds = data;
+    })
 
     this.appService.subjectMinutesRounds.subscribe(data =>{  this.minutes = data; })
 

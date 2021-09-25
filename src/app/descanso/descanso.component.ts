@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { AppService } from '../services/app.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class DescansoComponent implements OnInit {
   minutes: number = 0;
 
   contador$ = interval(1000);
+  contadorSubs:Subscription | undefined;
 
   constructor(private router:Router,private appServices:AppService) { }
 
@@ -36,10 +37,11 @@ export class DescansoComponent implements OnInit {
 
 
   startChronometer(){
-    let contadorObs = this.contador$.subscribe((n) => {
+    this.contadorSubs = this.contador$.subscribe((n) => {
       if (this.seconds == 0) {
         if (this.seconds == 0 && this.minutes == 0) {
-          contadorObs.unsubscribe();
+          this.contadorSubs?.unsubscribe();
+          this.contadorSubs = undefined;
           this.router.navigateByUrl('round');
 
         } else {
@@ -49,6 +51,12 @@ export class DescansoComponent implements OnInit {
       }
       this.seconds = this.seconds - 1;
     });
+  }
+
+
+  pauseDescanso(){
+    this.contadorSubs?.unsubscribe();
+    this.contadorSubs = undefined;
   }
 
 }

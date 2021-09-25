@@ -4,7 +4,8 @@
     </div>
 
     <footer class="card-footer">
-        <button class="button is-info" style="width: 100%; padding: 30px; border-radius: 10px;" >Pausar descanso</button>
+        <button class="button is-info" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="pauseDescanso()" *ngIf="contadorSubs">Pausar descanso</button>
+        <button class="button is-info" style="width: 100%; padding: 30px; border-radius: 10px;" (click)="startChronometer()" *ngIf="!contadorSubs">Reaunudar</button>
     </footer>
 </div>
 
